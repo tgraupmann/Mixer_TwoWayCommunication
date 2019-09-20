@@ -50,6 +50,8 @@ mixer.socket.on('interactivePacket', function (event) {
     event.params.participants[0].username == undefined) {
     return;
   }
-  document.getElementById('divHello').innerText = 'Hello '+event.params.participants[0].username+'! Click the button to send a message to the game client';
+  var divHello = document.getElementById('divHello');
+  var msg = '! Click the button to send a message to the game client';
+  divHello.innerText = 'Hello '+event.params.participants[0].username+msg;
 });
 ```
