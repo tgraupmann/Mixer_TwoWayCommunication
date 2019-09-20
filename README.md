@@ -107,3 +107,7 @@ Update the schema so the control ID matches. See that `my-control`  is the same 
   ]
 }
 ```
+
+**Setup and start the game client**
+
+The game client needs to be running in order to send messages. Follow the Game Client [Getting Started](https://github.com/tgraupmann/Mixer_TwoWayCommunication/tree/master/nodejs-game-client) setup instructions and then launch the game client in NodeJS. This requires that you use [Mixer Developer Lab](https://mixer.com/lab/oauth) and the [Mixer interactive page](https://mixer.com/lab/interactive) to set things up. Also modify the settings in the `mixerauth.json` to match the project settings.
