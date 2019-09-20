@@ -7,6 +7,20 @@ window.addEventListener('load', function initMixer() {
     left: offset,
     right: offset,
   });
+  
+	mixer.socket.on('interactivePacket', function (event) {
+		if (event == undefined ||
+			event.method != 'onParticipantJoin' ||
+			event.params == undefined ||
+			event.params.participants == undefined ||
+      event.params.participants.length == undefined ||
+      event.params.participants.length == 0 ||
+      event.params.participants[0] == undefined ||
+      event.params.participants[0].username == undefined) {
+			return;
+		}
+    document.getElementById('divHello').innerText = 'Hello '+event.params.participants[0].username+'! Click the button to send a message to the game client';
+	});
 
   // Whenever someone clicks on "Hello World", we'll send an event
   // to the game client on the control ID "hello-world"
