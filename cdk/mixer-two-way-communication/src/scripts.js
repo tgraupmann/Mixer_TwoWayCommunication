@@ -26,12 +26,15 @@ window.addEventListener('load', function initMixer() {
   });
 
   // Whenever someone clicks on "Hello World", we'll send an event
-  // to the game client on the control ID "hello-world"
+  // to the game client on the control ID which comes from the schema
   document.getElementById('hello-world').onclick = function(event) {
     mixer.socket.call('giveInput', {
-      controlID: 'hello-world',
-      event: 'click',
-      button: event.button,
+      controlID: 'my-control',
+      event: 'my-custom-event',
+      dataFieldOne: 1,
+      someOtherObject: {
+        full: 'of exciting data!',
+      },
     });
   };
 

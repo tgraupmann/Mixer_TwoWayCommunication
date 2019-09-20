@@ -56,3 +56,54 @@ mixer.socket.on('interactivePacket', function (event) {
   }
 });
 ```
+
+**Read Game client docs**
+
+Take a look at the [game client docs](https://dev.mixer.com/guides/mixplay/customcontrols/gameclients)
+
+**Sending data to the game client when the Hello button is clicked**
+
+The `script.js` can use the button event to send data to the game client. The [giveInput](https://dev.mixer.com/guides/mixplay/protocol/specification#giveinput) method is from the MixPlay specifications.
+
+```
+  // Whenever someone clicks on "Hello World", we'll send an event
+  // to the game client on the control ID which comes from the schema
+  document.getElementById('hello-world').onclick = function(event) {
+    mixer.socket.call('giveInput', {
+      controlID: 'my-control',
+      event: 'my-custom-event',
+      dataFieldOne: 1,
+      someOtherObject: {
+        full: 'of exciting data!',
+      },
+    });
+  };
+```
+
+Update the schema so the control ID matches.
+
+```
+{
+  "scenes": [
+    {
+      "sceneID": "default",
+      "controls": [
+        {
+          "controlID": "my-control",
+          "kind": "button",
+          "text": "My First Button",
+          "position": [
+            {
+              "width": 10,
+              "height": 8,
+              "size": "large",
+              "x": 0,
+              "y": 0
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
