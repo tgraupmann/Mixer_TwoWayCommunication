@@ -59,7 +59,7 @@ mixer.socket.on('interactivePacket', function (event) {
 
 **Read Game client docs**
 
-Take a look at the [game client docs](https://dev.mixer.com/guides/mixplay/customcontrols/gameclients)
+Take a look at the [game client docs](https://dev.mixer.com/guides/mixplay/customcontrols/gameclients).
 
 **Sending data to the game client when the Hello button is clicked**
 
@@ -80,7 +80,7 @@ The `script.js` can use the button event to send data to the game client. The [g
   };
 ```
 
-Update the schema so the control ID matches.
+Update the schema so the control ID matches. See that `my-control`  is the same in the schema and in `scripts.js`.
 
 ```
 {
