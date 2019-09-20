@@ -122,6 +122,8 @@ The schema and custom control need to be uploaded in order for communication to 
 
 Click the `Hello world!` button and that will send a message to the NodeJS server.
 
+![image_5](images/image_5.png)
+
 The information is logged in NodeJS from the [minimal_game_client.js](https://github.com/tgraupmann/Mixer_TwoWayCommunication/blob/master/nodejs-game-client/minimal_game_client.js) script from the event set in the `mixerClientOpened` method.
 
 ```
