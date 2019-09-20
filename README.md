@@ -18,9 +18,9 @@ This sample project shows how to have a custom control send messages to a game c
 In the custom control `scripts.js` subscribe to the `interactivePacket` to get socket events.
 
 ```
-	mixer.socket.on('interactivePacket', function (event) {
-		console.log(event);
-	});
+  mixer.socket.on('interactivePacket', function (event) {
+    console.log(event);
+  });
 ```
 
 When the custom control loads, you'll see the first events that fire when the page loads.
@@ -39,17 +39,17 @@ The page username is available in the `onParticipantJoin` event. The username ca
 ![image_2](images/image_2.png)
 
 ```
-	mixer.socket.on('interactivePacket', function (event) {
-		if (event == undefined ||
-			event.method != 'onParticipantJoin' ||
-			event.params == undefined ||
-			event.params.participants == undefined ||
-      event.params.participants.length == undefined ||
-      event.params.participants.length == 0 ||
-      event.params.participants[0] == undefined ||
-      event.params.participants[0].username == undefined) {
-			return;
-		}
-    document.getElementById('divHello').innerText = 'Hello '+event.params.participants[0].username+'! Click the button to send a message to the game client';
-	});
+mixer.socket.on('interactivePacket', function (event) {
+  if (event == undefined ||
+    event.method != 'onParticipantJoin' ||
+    event.params == undefined ||
+    event.params.participants == undefined ||
+    event.params.participants.length == undefined ||
+    event.params.participants.length == 0 ||
+    event.params.participants[0] == undefined ||
+    event.params.participants[0].username == undefined) {
+    return;
+  }
+  document.getElementById('divHello').innerText = 'Hello '+event.params.participants[0].username+'! Click the button to send a message to the game client';
+});
 ```
