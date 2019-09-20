@@ -111,3 +111,21 @@ Update the schema so the control ID matches. See that `my-control`  is the same 
 **Setup and start the game client**
 
 The game client needs to be running in order to send messages. Follow the Game Client [Getting Started](https://github.com/tgraupmann/Mixer_TwoWayCommunication/tree/master/nodejs-game-client) setup instructions and then launch the game client in NodeJS. This requires that you use [Mixer Developer Lab](https://mixer.com/lab/oauth) and the [Mixer interactive page](https://mixer.com/lab/interactive) to set things up. Also modify the settings in the `mixerauth.json` to match the project settings.
+
+**Upload the Custom Control to Mixer**
+
+The schema and custom control need to be uploaded in order for communication to work.
+
+![image_4](image_4.png)
+
+**Send Data from Custom Control to GameClient**
+
+Click the `Hello world!` button and that will send a message to the NodeJS server.
+
+The information is logged in NodeJS from the [minimal_game_client.js](https://github.com/tgraupmann/Mixer_TwoWayCommunication/blob/master/nodejs-game-client/minimal_game_client.js) script from the event set in the `mixerClientOpened` method.
+
+```
+this.client.on('message', (err) => console.log('<<<', err));
+```
+
+![image_3](image_3.png)

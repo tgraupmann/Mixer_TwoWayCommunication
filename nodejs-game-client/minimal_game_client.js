@@ -30,7 +30,10 @@ class MinimalMixerGameClient {
 
     mixerClientOpened() {
         console.log('Mixer client opened');
-        this.client.on('message', (err) => console.log('<<<', err));
+        this.client.on('message', (err) => 
+        {
+          console.log('<<<', err);
+        });
         this.client.on('send', (err) => console.log('>>>', err));
 
         this.client
