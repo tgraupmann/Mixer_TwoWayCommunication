@@ -120,7 +120,7 @@ The schema and custom control need to be uploaded in order for communication to 
 
 **Restart GameClient**
 
-Each time the schema or custom control is uploaded, the game client should be restarted. When the game client is off, the custom control will disappear from the live channel. When the game client is started again, the custom control should reappear.
+Each time the schema or custom control is uploaded, the game client should be restarted. When the game client is off, the custom control will disappear from the live channel. When the game client is started again, the custom control should reappear. The restart is necessary to see the updated schema and custom control code on the live channel.
 
 **Send Data from Custom Control to GameClient**
 
