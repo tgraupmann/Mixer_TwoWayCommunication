@@ -41,15 +41,15 @@ The page username is available in the `onParticipantJoin` event. The username ca
 ```
 mixer.socket.on('interactivePacket', function (event) {
   if (event == undefined ||
-    event.method != 'onParticipantJoin' ||
-    event.params == undefined ||
-    event.params.participants == undefined ||
-    event.params.participants.length == undefined ||
-    event.params.participants.length == 0 ||
-    event.params.participants[0] == undefined ||
-    event.params.participants[0].username == undefined) {
+    event.params == undefined) {
     return;
-  } else {
+  }
+  console.log('interactivePacket', event);
+  if (event.method == 'onParticipantJoin' &&
+    event.params.participants !== undefined &&
+    event.params.participants.length > 0 &&
+    event.params.participants[0] != undefined &&
+    event.params.participants[0].username != undefined) {
     var divHello = document.getElementById('divHello');
     var msg = '! Click the button to send a message to the game client';
     divHello.innerText = 'Hello '+event.params.participants[0].username+msg;
@@ -135,3 +135,48 @@ this.client.on('message', (err) => console.log('<<<', err));
 ```
 
 ![image_3](images/image_3.png)
+
+**Game Client Reply**
+
+When the game client receives the `giveInput` event, it can send a reply via the [broadcastEvent](https://dev.mixer.com/guides/mixplay/protocol/specification#broadcastevent) method.
+
+```
+this.client.on('message', (err) => 
+{
+  console.log('<<<', err);
+  const blob = JSON.parse(err);
+  if (blob.method == 'giveInput') {
+      console.log('Sending data to custom control...');
+      this.client.broadcastEvent({
+        scope: ['everyone'],
+        data: {
+            "my-control": {
+                "with": "Game Client says Hello!"
+            }
+        },
+    });
+  }
+});
+```
+
+**Custom Control Display Reply**
+
+The custom control will receive the `interactivePacket` reply and can display that in a div.
+
+![image_6](images/image_6.png)
+
+```
+  mixer.socket.on('interactivePacket', function (event) {
+    if (event == undefined ||
+      event.params == undefined) {
+      return;
+    }
+    console.log('interactivePacket', event);
+    if (event.method == 'event' &&
+      event.params['my-control'] != undefined &&
+      event.params['my-control'].with != undefined) {
+      var divServer = document.getElementById('divServer');
+      divServer.innerText = event.params['my-control'].with;
+    }
+  });
+```
