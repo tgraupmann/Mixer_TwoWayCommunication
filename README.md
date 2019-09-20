@@ -118,6 +118,10 @@ The schema and custom control need to be uploaded in order for communication to 
 
 ![image_4](images/image_4.png)
 
+**Restart GameClient**
+
+Each time the schema or custom control is uploaded, the game client should be restarted. When the game client is off, the custom control will disappear from the live channel. When the game client is started again, the custom control should reappear.
+
 **Send Data from Custom Control to GameClient**
 
 Click the `Hello world!` button and that will send a message to the NodeJS server.
