@@ -116,7 +116,7 @@ The game client needs to be running in order to send messages. Follow the Game C
 
 The schema and custom control need to be uploaded in order for communication to work.
 
-![image_4](image_4.png)
+![image_4](images/image_4.png)
 
 **Send Data from Custom Control to GameClient**
 
@@ -128,4 +128,4 @@ The information is logged in NodeJS from the [minimal_game_client.js](https://gi
 this.client.on('message', (err) => console.log('<<<', err));
 ```
 
-![image_3](image_3.png)
+![image_3](images/image_3.png)
