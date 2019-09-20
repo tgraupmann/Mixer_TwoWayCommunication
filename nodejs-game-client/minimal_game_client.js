@@ -33,6 +33,18 @@ class MinimalMixerGameClient {
         this.client.on('message', (err) => 
         {
           console.log('<<<', err);
+          const blob = JSON.parse(err);
+          if (blob.method == 'giveInput') {
+              console.log('Sending data to custom control...');
+              this.client.broadcastEvent({
+                scope: ['everyone'],
+                data: {
+                    "my-control": {
+                        "with": "Game Client says Hello!"
+                    }
+                },
+            });
+          }
         });
         this.client.on('send', (err) => console.log('>>>', err));
 

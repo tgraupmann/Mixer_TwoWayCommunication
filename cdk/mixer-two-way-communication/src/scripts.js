@@ -9,6 +9,7 @@ window.addEventListener('load', function initMixer() {
   });
   
   mixer.socket.on('interactivePacket', function (event) {
+    console.log('interactivePacket', event);
     if (event == undefined ||
       event.method != 'onParticipantJoin' ||
       event.params == undefined ||
